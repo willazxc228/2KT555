@@ -1,0 +1,30 @@
+abstract class Publisher {
+    constructor(public title: string, public author: string, public pubYear: number, public copies: number) {}
+}
+
+class Book extends Publisher {
+    constructor(title: string, author: string, pubYear: number, copies: number, public pages: number) {
+        super(title, author, pubYear, copies);
+    }
+}
+
+class Magazine extends Publisher {
+    constructor(title: string, author: string, pubYear: number, copies: number, public issue: number) {
+        super(title, author, pubYear, copies);
+    }
+}
+
+class Reader {
+    constructor(public firstName: string, public lastName: string, public items: Publisher[] = []) {}
+
+    addItem(item: Publisher): void {
+        this.items.push(item);
+    }
+}
+
+const book1 = new Book("Book 1", "Author 1", 1999, 2, 110);
+const magazine1 = new Magazine("Magazine 1", "Author 2", 2200, 3, 30);
+
+const reader1 = new Reader("Polina", "Noppoleon");
+reader1.addItem(book1);
+reader1.addItem(magazine1);
